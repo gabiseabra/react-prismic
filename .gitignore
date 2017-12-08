@@ -1,0 +1,15 @@
+# Dependencies
+node_modules
+
+# Configuration
+.env
+
+# IDE
+.vscode
+
+# Logs
+*.log
+tmp
+
+# Build
+dist
