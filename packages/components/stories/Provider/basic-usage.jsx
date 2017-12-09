@@ -12,5 +12,5 @@ export default withInfo({
   text: `
   PrismicProvider
   `,
-  propTables: [ PrismicProvider ],
+  propTables: [ PrismicProvider ]
 })(Example)

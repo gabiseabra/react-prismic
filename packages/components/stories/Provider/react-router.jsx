@@ -7,6 +7,8 @@ const CurrentPage = withRouter(({ location }) => (
   <p>You are in {location.pathname}</p>
 ))
 
+CurrentPage.displayName = "CurrentPage"
+
 const Example = () => (
   <MemoryRouter>
     <div>
@@ -18,8 +20,7 @@ const Example = () => (
   </MemoryRouter>
 )
 
-export default withInfo({
-  text: `
-  AAA
-  `
-})(Example)
+export default withInfo(`
+To render document type links with react-router-dom,
+pass the _react-router-dom/Link_ component to _PrismicProvider_.
+`)(Example)
