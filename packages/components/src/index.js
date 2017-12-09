@@ -4,7 +4,7 @@ export { default as RichText } from "./RichText"
 // export { default as Embed } from "./Embed"
 export { default as SliceZone } from "./SliceZone"
 export {
-  default as Provider,
+  default as PrismicProvider,
   prismicShape,
   withPrismicContext
 } from "./Provider"
