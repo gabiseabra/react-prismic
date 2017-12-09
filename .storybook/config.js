@@ -4,7 +4,8 @@ import { configure } from "@storybook/react"
 setDefaults({
   header: false,
   inline: true,
-  source: true
+  source: true,
+  propTables: false
 })
 
 function loadStories() {

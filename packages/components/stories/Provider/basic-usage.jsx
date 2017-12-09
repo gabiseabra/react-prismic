@@ -8,6 +8,9 @@ const Example = () => (
   </PrismicProvider>
 )
 
-export default withInfo(`
-PrismicProvider
-`)(Example)
+export default withInfo({
+  text: `
+  PrismicProvider
+  `,
+  propTables: [ PrismicProvider ],
+})(Example)

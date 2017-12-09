@@ -1,7 +1,5 @@
 import { storiesOf } from "@storybook/react"
-import basic from "./basic-usage"
-
-console.log(storiesOf)
 
 storiesOf("Provider", module)
-  .add("basic usage", basic)
+  .add("basic usage", require("./basic-usage").default)
+  .add("react-router", require("./react-router").default)

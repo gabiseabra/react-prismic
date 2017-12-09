@@ -24,7 +24,7 @@ export default class PrismicProvider extends React.Component {
   }
 
   static defaultProps = {
-    resolve: (type, uid) => `/${type}/${uid}`,
+    resolve: ({ type, uid }) => `/${type}/${uid}`,
     Link
   }
 
