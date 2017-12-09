@@ -1,2 +1,5 @@
-import "@storybook/addon-info/register"
-import "@storybook/addon-knobs/register"
+import { setDefaults } from "@storybook/addon-info"
+
+setDefaults({
+  source: true
+})

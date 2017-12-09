@@ -2,10 +2,10 @@ import React from "react"
 import PropTypes from "prop-types"
 import flow from "lodash.flow"
 
-export const prismicShape = {
+export const prismicShape = PropTypes.shape({
   resolve: PropTypes.func.isRequired,
   DocLink: PropTypes.any.isRequired
-}
+})
 
 // Default Link component
 export const Link = ({ to, ...props }) => <a href={to} {...props} />
