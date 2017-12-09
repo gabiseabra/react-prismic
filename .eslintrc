@@ -23,7 +23,7 @@
     "import/no-extraneous-dependencies": ["error", {
       "devDependencies": true,
       "peerDependencies": true
-      }],
+    }],
     "quotes": ["error", "double", {
       "avoidEscape": true
     }],
@@ -43,12 +43,9 @@
     "no-plusplus": ["error", {
       "allowForLoopAfterthoughts": true
     }],
-		"indent": ["error", "tab", {
+		"indent": ["error", 2, {
 			"SwitchCase": 1
 		}],
-		"react/jsx-indent": ["error", "tab"],
-		"react/jsx-indent-props": ["error", "tab"],
-		"no-tabs": "off",
 		"func-names": "off",
     "comma-dangle": ["error", "never"],
     "array-bracket-spacing": ["error", "always"],

@@ -9,6 +9,10 @@
   "author": "Gabriela Seabra <gabriela.lima.se@gmail.com> (https://github.com/gabiseabra)",
   "license": "MIT",
   "dependencies": {
+    "lodash.flow": "^3.5.0",
     "react": "^16.2.0"
+  },
+  "devDependencies": {
+    "prop-types": "^15.6.0"
   }
 }
