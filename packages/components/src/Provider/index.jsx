@@ -34,11 +34,13 @@ export default class PrismicProvider extends React.Component {
 
   getChildContext() {
     return {
-      resolve: flow(
-        this.props.resolve,
-        href => href.replace(/\/*$/, "")
-      ),
-      DocLink: this.props.Link
+      prismic: {
+        resolve: flow(
+          this.props.resolve,
+          href => href.replace(/\/*$/, "")
+        ),
+        DocLink: this.props.Link
+      }
     }
   }
 
