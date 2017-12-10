@@ -9,8 +9,10 @@
   "author": "Gabriela Seabra <gabriela.lima.se@gmail.com> (https://github.com/gabiseabra)",
   "license": "MIT",
   "dependencies": {
+    "deep-equal": "^1.0.1",
     "lodash.keyby": "^4.6.0",
     "react": "^16.2.0",
+    "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "reselect": "^3.0.1"
   },

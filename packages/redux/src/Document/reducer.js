@@ -1,5 +1,5 @@
 import keyBy from "lodash.keyby"
-import { SUCCESS as FEED_SUCCESS } from "../feed"
+import { SUCCESS as FEED_SUCCESS } from "../Feed/reducer"
 
 export const CLEAR = "prismic/docs/CLEAR"
 export const LOAD = "prismic/docs/LOAD"
@@ -8,7 +8,7 @@ export const SUCCESS = "prismic/docs/SUCCESS"
 export const FAILURE = "prismic/docs/FAILURE"
 
 export const clear = () => ({ type: CLEAR })
-export const load = (docType, uid = null) => ({ type: LOAD, docType, uid })
+export const load = (docType, uid = null, options) => ({ type: LOAD, docType, uid, options })
 export const request = (docType, uid = null) => ({ type: REQUEST, docType, uid })
 export const success = (docType, uid, doc) => ({ type: SUCCESS, docType, uid, doc })
 export const fail = (docType, uid, error) => ({ type: FAILURE, docType, uid, error })
@@ -50,12 +50,12 @@ docs.docType = (state = {}, action) => {
     case FEED_SUCCESS:
       return {
         ...state,
-        ...byId(action.results.map(doc => ({ state: "ready", doc })))
+        ...byId(action.results.map(doc => ({ doc })))
       }
     case FAILURE:
       return {
         ...state,
-        [uid]: { state: "idle", error: action.error }
+        [uid]: { error: action.error }
       }
     default: return state
   }
