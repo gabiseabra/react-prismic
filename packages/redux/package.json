@@ -9,7 +9,10 @@
   "author": "Gabriela Seabra <gabriela.lima.se@gmail.com> (https://github.com/gabiseabra)",
   "license": "MIT",
   "dependencies": {
-    "react": "^16.2.0"
+    "lodash.keyby": "^4.6.0",
+    "react": "^16.2.0",
+    "redux": "^3.7.2",
+    "reselect": "^3.0.1"
   },
   "devDependencies": {
     "prop-types": "^15.6.0"
