@@ -45,7 +45,7 @@ class PrismicLoader extends React.Component {
     const hasDocument = (!next.document || !next.documents)
     const sameOptions = eql(this.options, options)
     const sameDocument = (next.type === this.props.type && next.uid === this.props.uid)
-    if(!hasDocument || !sameOptions || !sameDocument) {
+    if(!hasDocument || (!sameOptions && sameDocument)) {
       load(options)
     }
   }
