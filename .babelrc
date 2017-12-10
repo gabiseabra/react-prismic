@@ -1,5 +1,8 @@
 {
 	"presets": [
+    ["env", {
+      "modules": "commonjs"
+    }],
 		"stage-1",
 		"react"
   ],
