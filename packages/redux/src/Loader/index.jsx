@@ -28,7 +28,7 @@ class PrismicLoader extends React.Component {
     type: PropTypes.string.isRequired,
     uid: PropTypes.string,
     component: PropTypes.any, // ?
-    children: PropTypes.node,
+    children: PropTypes.func,
     load: PropTypes.func.isRequired,
     ...childProps,
     ...optionsProps
@@ -56,10 +56,11 @@ class PrismicLoader extends React.Component {
 
   render() {
     const { children, component: Component } = this.props
+    const props = this.childProps
     if(Component) {
-      return <Component {...this.childProps} />
+      return <Component {...props} />
     }
-    return children
+    return children(props)
   }
 }
 

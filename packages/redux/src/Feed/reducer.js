@@ -70,3 +70,5 @@ feed.docType = (state = initialState, action) => {
     default: return state
   }
 }
+
+export default feed

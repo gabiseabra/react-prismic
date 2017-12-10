@@ -11,6 +11,7 @@ setDefaults({
 function loadStories() {
   require("../stories")
   require("../packages/components/stories")
+  require("../packages/redux/stories")
 }
 
 configure(loadStories, module)
