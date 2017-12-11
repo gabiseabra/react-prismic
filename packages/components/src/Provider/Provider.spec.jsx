@@ -14,4 +14,13 @@ describe("<PrismicProvider />", () => {
     wrapper.find("a[href='/foo/bar']").should.be.present()
   })
 
+  it("provides document Link component", () => {
+    const link = { link_type: "Document", type: "foo", uid: "bar" }
+    const DocLink = ({ to }) => <div>{to}</div>
+    const wrapper = mount(
+      <PrismicProvider Link={DocLink}>
+        <Link to={link}>Test</Link>
+      </PrismicProvider>)
+    wrapper.find(DocLink).should.be.present()
+  })
 })

@@ -2,14 +2,18 @@
   "name": "react-prismic-saga",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Gabriela Seabra <gabriela.lima.se@gmail.com> (https://github.com/gabiseabra)",
   "license": "MIT",
   "dependencies": {
-    "react": "^16.2.0"
+    "es6-error": "^4.0.2",
+    "prismic-javascript": "^1.5.0-beta.0",
+    "react": "^16.2.0",
+    "react-prismic-redux": "^0.0.0",
+    "redux-saga": "^0.16.0"
   },
   "devDependencies": {
     "prop-types": "^15.6.0"
