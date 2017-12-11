@@ -1,8 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { prismicShape, withPrismicContext } from "../Provider"
+import { prismicShape, withPrismic } from "../Provider"
+import BaseLink from "./BaseLink"
 
-const PrismicLink = ({ to: link, children, prismic: { resolve, DocLink }, ...props }) => {
+const PrismicLink = ({ to: link, children, resolve, DocLink, ...props }) => {
   const text = children || link.url
   if(link.link_type === "Document") {
     return <DocLink to={resolve(link)} {...props}>{text}</DocLink>
@@ -12,9 +13,14 @@ const PrismicLink = ({ to: link, children, prismic: { resolve, DocLink }, ...pro
 
 PrismicLink.propTypes = {
   to: PropTypes.object.isRequired,
-  resolver: PropTypes.func,
   prismic: prismicShape,
-  children: PropTypes.node
+  children: PropTypes.node,
+  resolve: PropTypes.func,
+  DocLink: PropTypes.any
 }
 
-export default withPrismicContext(PrismicLink)
+PrismicLink.defaultProps = {
+  DocLink: BaseLink
+}
+
+export default withPrismic("resolve", "DocLink")(PrismicLink)

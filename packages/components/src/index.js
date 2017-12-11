@@ -6,5 +6,5 @@ export { default as SliceZone } from "./SliceZone"
 export {
   default as PrismicProvider,
   prismicShape,
-  withPrismicContext
+  withPrismic
 } from "./Provider"

@@ -7,25 +7,15 @@ export const prismicShape = PropTypes.shape({
   DocLink: PropTypes.any.isRequired
 })
 
-// Default Link component
-export const Link = ({ to, ...props }) => <a href={to} {...props} />
-
-Link.propTypes = {
-  to: PropTypes.string.isRequired
-}
-
 export default class PrismicProvider extends React.Component {
-  static Link = Link
-
   static propTypes = {
     resolve: PropTypes.func.isRequired,
-    Link: PropTypes.any.isRequired,
+    Link: PropTypes.any,
     children: PropTypes.node.isRequired
   }
 
   static defaultProps = {
-    resolve: ({ type, uid }) => `/${type}/${uid}`,
-    Link
+    resolve: ({ type, uid }) => `/${type}/${uid}`
   }
 
   static childContextTypes = {
@@ -49,8 +39,21 @@ export default class PrismicProvider extends React.Component {
   }
 }
 
-export const withPrismicContext = (Component) => {
-  const Context = (props, ctx) => <Component {...props} {...ctx} />
+const extract = keys => (object) => {
+  const result = {}
+  keys.forEach((key) => {
+    result[key] = object[key]
+  })
+  return result
+}
+
+export const withPrismic = (...keys) => (Component) => {
+  const Context = (props, ctx) => (
+    <Component
+      {...props}
+      {...Context.extract(ctx)} />
+  )
+  Context.extract = extract(keys)
   Context.contextTypes = {
     prismic: prismicShape
   }
