@@ -11,8 +11,16 @@ const PrismicLink = ({ to: link, children, resolve, DocLink, ...props }) => {
   return <a href={link.url} {...props}>{text}</a>
 }
 
+
+PrismicLink.shape = PropTypes.shape({
+  link_type: PropTypes.string.isRequired,
+  url: PropTypes.string,
+  type: PropTypes.string,
+  uid: PropTypes.string
+})
+
 PrismicLink.propTypes = {
-  to: PropTypes.object.isRequired,
+  to: PrismicLink.shape.isRequired,
   prismic: prismicShape,
   children: PropTypes.node,
   resolve: PropTypes.func,

@@ -12,8 +12,10 @@ const PrismicRichText = ({ children: nodes, ...props }) => (
 )
 /* eslint-enable */
 
+PrismicRichText.shape = PropTypes.array
+
 PrismicRichText.propTypes = {
-  children: PropTypes.array.isRequired
+  children: PrismicRichText.shape.isRequired
 }
 
 PrismicRichText.Element = Element
