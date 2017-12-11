@@ -9,7 +9,10 @@
   "dependencies": {
     "lodash.flow": "^3.5.0",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-saga": "^0.16.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -33,9 +36,12 @@
     "lerna": "^2.5.1",
     "mocha": "^4.0.1",
     "prop-types": "^15.6.0",
-    "react-test-renderer": "^16.2.0"
+    "react-test-renderer": "^16.2.0",
+    "webpack": "^3.10.0",
+    "webpack-blocks": "^1.0.0-rc.2"
   },
   "scripts": {
+    "build": "webpack",
     "test": "mocha \"./{packages,test}/**/*.spec.{js,jsx}\""
   }
 }
