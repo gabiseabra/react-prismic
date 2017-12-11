@@ -4,7 +4,7 @@ import flow from "lodash.flow"
 
 export const prismicShape = PropTypes.shape({
   resolve: PropTypes.func.isRequired,
-  DocLink: PropTypes.any.isRequired
+  DocLink: PropTypes.any
 })
 
 export default class PrismicProvider extends React.Component {
@@ -39,7 +39,7 @@ export default class PrismicProvider extends React.Component {
   }
 }
 
-const extract = keys => (object) => {
+const extract = keys => (object = {}) => {
   const result = {}
   keys.forEach((key) => {
     result[key] = object[key]
@@ -50,8 +50,8 @@ const extract = keys => (object) => {
 export const withPrismic = (...keys) => (Component) => {
   const Context = (props, ctx) => (
     <Component
-      {...props}
-      {...Context.extract(ctx)} />
+      {...Context.extract(ctx.prismic)}
+      {...props} />
   )
   Context.extract = extract(keys)
   Context.contextTypes = {
