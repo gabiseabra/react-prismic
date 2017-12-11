@@ -5,12 +5,6 @@ import Repeatable from "./Repeatable"
 
 export default () => (
   <div>
-    <a
-      href="https://example-repo.prismic.io/api/v2"
-      rel="noopener noreferrer"
-      target="_blank">
-      Example Repo
-    </a>
     <h1>Single Type</h1>
     <PrismicDocument type="single" component={Single} />
     <h1>Repeatable</h1>

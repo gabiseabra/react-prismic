@@ -1,13 +1,19 @@
 import React from "react"
-import { RichText } from "../../packages/components/src"
+import { RichText, SliceZone } from "../../packages/components/src"
+import { Text, Gallery, Quote } from "../../packages/components/src/SliceZone/schema"
 
 const schema = {
+  text: Text,
+  image_gallery: Gallery,
+  quote: Quote
 }
 
 const Doc = ({ title, rich_text, body }) => (
   <div>
     <RichText>{title}</RichText>
     <RichText>{rich_text}</RichText>
+    <hr />
+    <SliceZone schema={schema}>{body}</SliceZone>
   </div>
 )
 
