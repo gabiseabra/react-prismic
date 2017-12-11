@@ -6,7 +6,9 @@
   "author": "Gabriela Seabra <gabriela.lima.se@gmail.com> (https://github.com/gabiseabra)",
   "license": "MIT",
   "scripts": {
-    "build": "../../node_modules/.bin/babel src -d dist"
+    "build": "babel src -d dist",
+    "clean": "rimraf dist",
+    "prepublish": "yarn run clean && yarn run build"
   },
   "dependencies": {
     "es6-error": "^4.0.2",
@@ -16,6 +18,9 @@
     "redux-saga": "^0.16.0"
   },
   "devDependencies": {
-    "prop-types": "^15.6.0"
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "prop-types": "^15.6.0",
+    "rimraf": "^2.6.2"
   }
 }

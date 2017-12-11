@@ -38,6 +38,7 @@
     "prop-types": "^15.6.0",
     "react-test-renderer": "^16.2.0",
     "redux-logger": "^3.0.6",
+    "rimraf": "^2.6.2",
     "webpack": "^3.10.0",
     "webpack-blocks": "^1.0.0-rc.2"
   },
