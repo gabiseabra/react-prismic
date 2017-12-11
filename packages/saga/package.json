@@ -1,6 +1,6 @@
 {
   "name": "react-prismic-saga",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "dist/index.js",
   "author": "Gabriela Seabra <gabriela.lima.se@gmail.com> (https://github.com/gabiseabra)",
@@ -12,7 +12,7 @@
     "es6-error": "^4.0.2",
     "prismic-javascript": "^1.5.0-beta.0",
     "react": "^16.2.0",
-    "react-prismic-redux": "^0.0.0",
+    "react-prismic-redux": "^0.1.0",
     "redux-saga": "^0.16.0"
   },
   "devDependencies": {
