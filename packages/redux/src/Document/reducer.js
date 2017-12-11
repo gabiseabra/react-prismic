@@ -1,4 +1,6 @@
+import flow from "lodash.flow"
 import keyBy from "lodash.keyby"
+import mapValues from "lodash.mapvalues"
 import { SUCCESS as FEED_SUCCESS } from "../Feed/reducer"
 
 export const CLEAR = "prismic/docs/CLEAR"
@@ -50,7 +52,10 @@ docs.docType = (state = {}, action) => {
     case FEED_SUCCESS:
       return {
         ...state,
-        ...byId(action.results.map(doc => ({ doc })))
+        ...flow(
+          byId,
+          _ => mapValues(_, doc => ({ doc }))
+        )(action.results)
       }
     case FAILURE:
       return {

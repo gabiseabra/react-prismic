@@ -21,6 +21,12 @@ function feed(state = {}, action) {
     case CLEAR:
       return {}
     case REQUEST:
+    case SUCCESS:
+    case FAILURE:
+      return {
+        ...state,
+        [action.docType]: feed.docType(state[action.docType], action)
+      }
     default: return state
   }
 }
@@ -56,7 +62,7 @@ feed.docType = (state = initialState, action) => {
         pagination: action.pagination,
         pages: {
           ...state.pages,
-          [action.page]: { docs: action.results.map(({ id }) => id) }
+          [action.page]: { docs: action.results.map(({ uid }) => uid) }
         }
       }
     case FAILURE:
