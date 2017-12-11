@@ -5,6 +5,7 @@
   "main": "index.js",
   "author": "Gabriela Seabra <gabriela.lima.se@gmail.com>",
   "license": "MIT",
+  "repository": "gabiseabra/react-prismic",
   "dependencies": {
     "lodash.flow": "^3.5.0",
     "react": "^16.2.0",
