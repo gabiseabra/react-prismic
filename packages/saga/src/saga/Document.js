@@ -1,5 +1,5 @@
 import { put, call, takeLatest } from "redux-saga/effects"
-import * as actions from "react-prismic-redux/src/Document/reducer"
+import * as actions from "react-prismic-redux/dist/Document/reducer"
 
 export default function create(apiClient) {
   function * request({ docType, uid, options }) {
