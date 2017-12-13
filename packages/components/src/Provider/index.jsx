@@ -11,6 +11,7 @@ export default class PrismicProvider extends React.Component {
   static propTypes = {
     resolve: PropTypes.func.isRequired,
     Link: PropTypes.any,
+    Element: PropTypes.any,
     children: PropTypes.node.isRequired
   }
 
@@ -29,7 +30,8 @@ export default class PrismicProvider extends React.Component {
           this.props.resolve,
           href => href.replace(/\/*$/, "")
         ),
-        DocLink: this.props.Link
+        DocLink: this.props.Link,
+        Element: this.props.Element
       }
     }
   }

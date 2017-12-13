@@ -2,15 +2,19 @@ import React from "react"
 import PropTypes from "prop-types"
 import elements from "./elements"
 
-const PrismicElement = (props) => {
-  let Element = elements[props.type]
-  if(props.tag) Element = Element.BaseElement
-  return <Element {...props} />
-}
-
-PrismicElement.propTypes = {
+const propTypes = {
   tag: PropTypes.any,
   type: PropTypes.string.isRequired
 }
 
-export default PrismicElement
+export const createPrismicElement = (e) => {
+  const Wrapper = (props) => {
+    let Element = e[props.type]
+    if(props.tag) Element = Element.BaseElement
+    return <Element {...props} />
+  }
+  Wrapper.propTypes = propTypes
+  return Wrapper
+}
+
+export default createPrismicElement(elements)
