@@ -4,6 +4,8 @@ import eql from "deep-equal"
 
 const optionsProps = {
   lang: PropTypes.string,
+  after: PropTypes.string,
+  orderings: PropTypes.string,
   pageSize: PropTypes.number,
   page: PropTypes.number
 }
