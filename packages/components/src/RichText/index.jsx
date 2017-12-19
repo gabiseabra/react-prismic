@@ -6,12 +6,14 @@ import group from "./groupNodes"
 import { withPrismic } from "../Provider"
 
 /* eslint-disable react/no-array-index-key */
-const PrismicRichText = ({ children: nodes, Element, ...props }) => (
+const _PrismicRichText = ({ children: nodes, Element, ...props }) => (
   group(nodes).map((node, i) => (
     <Element key={`${node.type}-${i}`} {...node} {...props} />
   ))
 )
 /* eslint-enable */
+
+const PrismicRichText = withPrismic(_PrismicRichText)
 
 PrismicRichText.shape = PropTypes.array
 
@@ -28,4 +30,4 @@ PrismicRichText.Element = BaseElement
 
 PrismicRichText.Slicer = Slicer
 
-export default withPrismic(PrismicRichText)
+export default PrismicRichText

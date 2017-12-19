@@ -47,6 +47,7 @@
 			"SwitchCase": 1
 		}],
 		"func-names": "off",
+    "no-underscore-dangle": "off",
     "comma-dangle": ["error", "never"],
     "array-bracket-spacing": ["error", "always"],
     "arrow-body-style": "off",
