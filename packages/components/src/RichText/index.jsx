@@ -24,7 +24,7 @@ PrismicRichText.defaultProps = {
   Element: BaseElement
 }
 
-PrismicRichText.Element = Element
+PrismicRichText.Element = BaseElement
 
 PrismicRichText.Slicer = Slicer
 
