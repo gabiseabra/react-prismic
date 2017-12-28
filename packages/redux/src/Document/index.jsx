@@ -20,7 +20,7 @@ DocumentLoader.propTypes = {
 }
 
 const props = (...args) => ({
-  document: getDocument(...args),
+  data: getDocument(...args),
   error: getDocumentError(...args),
   loading: isDocumentLoading(...args)
 })

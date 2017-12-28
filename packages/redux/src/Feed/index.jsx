@@ -21,7 +21,7 @@ FeedLoader.propTypes = {
 }
 
 const props = (...args) => ({
-  documents: getPageDocuments(...args),
+  data: getPageDocuments(...args),
   error: getPageError(...args),
   loading: isPageLoading(...args)
 })

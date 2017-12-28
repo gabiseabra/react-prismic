@@ -13,8 +13,7 @@ const optionsProps = {
 const childProps = {
   loading: PropTypes.bool.isRequired,
   error: PropTypes.instanceOf(Error),
-  document: PropTypes.object,
-  documents: PropTypes.arrayOf(PropTypes.object)
+  data: PropTypes.any
 }
 
 const extract = (src, propTypes) => {
@@ -42,12 +41,11 @@ class PrismicLoader extends React.Component {
   }
 
   componentWillReceiveProps(next) {
-    const { load } = this.props
+    const { load, data } = this.props
     const options = extract(next, optionsProps)
-    const hasDocument = (!next.document || !next.documents)
     const sameOptions = eql(this.options, options)
     const sameDocument = (next.type === this.props.type && next.uid === this.props.uid)
-    if(!hasDocument || (!sameOptions && sameDocument)) {
+    if(!data || (!sameOptions && sameDocument)) {
       load(options)
     }
   }
