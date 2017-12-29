@@ -1,8 +1,9 @@
-import { put, fork, call, select, takeLatest } from "redux-saga/effects"
+import { put, fork, call, select, takeEvery } from "redux-saga/effects"
 import * as actions from "react-prismic-redux/dist/Feed/reducer"
 import {
   getPageData,
-  getOptions
+  getOptions,
+  isPageLoading
 } from "react-prismic-redux/dist/Feed/selectors"
 
 const sameOptions = (next, prev = {}) => {
@@ -22,14 +23,15 @@ export default function create(apiClient) {
   }
 
   function * load({ docType, page, options }) {
+    const loading = yield select(isPageLoading, { type: docType, page })
     const data = yield select(getPageData, { type: docType, page })
     const prevOptions = yield select(getOptions, { type: docType, page })
-    if(!data.docs || !sameOptions(options, prevOptions)) {
+    if(!loading && (!data.docs || !sameOptions(options, prevOptions))) {
       yield fork(request, { docType, page, options })
     }
   }
 
   return function * watch() {
-    yield takeLatest(actions.LOAD, load)
+    yield takeEvery(actions.LOAD, load)
   }
 }
