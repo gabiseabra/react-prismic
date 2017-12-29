@@ -19,7 +19,7 @@ export default function create(apiClient) {
   function * load({ docType, uid, options }) {
     const doc = yield select(getDocument, { type: docType, uid })
     const lang = yield select(getDocumentLang, { type: docType, uid })
-    if(options.lang !== lang && options.lang !== doc.lang) {
+    if(!doc || (options.lang !== lang && options.lang !== doc.lang)) {
       yield fork(request, { docType, uid, options })
     }
   }
