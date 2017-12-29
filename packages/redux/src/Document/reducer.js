@@ -50,18 +50,18 @@ docs.docType = (state = {}, action) => {
       return {
         ...state,
         [uid]: {
-          loading: true,
-          ...data
+          ...data,
+          loading: true
         }
       }
     case SUCCESS:
       return {
         ...state,
         [uid]: {
+          ...data,
           doc: action.doc,
           loading: false,
-          lang: action.options.lang,
-          ...data
+          lang: action.options.lang
         }
       }
     case FEED_SUCCESS:
@@ -76,9 +76,9 @@ docs.docType = (state = {}, action) => {
       return {
         ...state,
         [uid]: {
+          ...data,
           loading: false,
-          error: action.error,
-          ...data
+          error: action.error
         }
       }
     default: return state
