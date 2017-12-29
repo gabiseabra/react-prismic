@@ -6,7 +6,7 @@ export default function create(apiClient) {
     yield put(actions.request(docType, page))
     try {
       const collection = yield call(apiClient.all, docType, options)
-      yield put(actions.success(docType, page, collection))
+      yield put(actions.success(docType, page, collection, options))
     } catch(error) {
       yield put(actions.fail(docType, page, error))
     }

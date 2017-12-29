@@ -1,25 +1,34 @@
+import pick from "lodash.pick"
+
 export const CLEAR = "prismic/feed/CLEAR"
 export const LOAD = "prismic/feed/LOAD"
 export const REQUEST = "prismic/feed/REQUEST"
 export const SUCCESS = "prismic/feed/SUCCESS"
 export const FAILURE = "prismic/feed/FAILURE"
 
-export const clear = () => ({ type: CLEAR })
+export const clear = docType => ({ type: CLEAR, docType })
 export const load = (docType, page = 1, options) => ({ type: LOAD, page, docType, options })
 export const request = (docType, page) => ({ type: REQUEST, docType, page })
-export const success = (docType, page, { results, pagination }) => ({
+export const success = (docType, page, { results, pagination }, options) => ({
   type: SUCCESS,
   docType,
   page,
   results,
-  pagination
+  pagination,
+  options
 })
 export const fail = (docType, page, error) => ({ type: FAILURE, docType, page, error })
 
 function feed(state = {}, action) {
   switch(action.type) {
     case CLEAR:
-      return {}
+      return (action.docType ?
+        {
+          ...state,
+          [action.docType]: undefined
+        } :
+        {}
+      )
     case REQUEST:
     case SUCCESS:
     case FAILURE:
@@ -35,6 +44,8 @@ const initialState = {
   pages: {},
   pagination: {}
 }
+
+const pickOptions = _ => pick(_, [ "lang", "pageSize", "orderings", "after", "fetch" ])
 
 feed.docType = (state = initialState, action) => {
   switch(action.type) {
@@ -60,6 +71,7 @@ feed.docType = (state = initialState, action) => {
       return {
         ...state,
         pagination: action.pagination,
+        options: pickOptions(action.options),
         pages: {
           ...state.pages,
           [action.page]: { docs: action.results.map(({ uid }) => uid) }

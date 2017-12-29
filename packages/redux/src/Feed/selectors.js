@@ -9,6 +9,8 @@ export const getFeed = createSelector(
   (feed, type) => feed[type] || {}
 )
 
+export const getOptions = createSelector(getFeed, feed => feed.options || {})
+
 export const getPagination = createSelector(getFeed, feed => feed.pagination || {})
 
 export const getPageData = createSelector(

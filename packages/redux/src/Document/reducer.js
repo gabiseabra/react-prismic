@@ -10,9 +10,15 @@ export const SUCCESS = "prismic/docs/SUCCESS"
 export const FAILURE = "prismic/docs/FAILURE"
 
 export const clear = () => ({ type: CLEAR })
-export const load = (docType, uid = null, options) => ({ type: LOAD, docType, uid, options })
+export const load = (docType, uid = null, options = {}) => ({ type: LOAD, docType, uid, options })
 export const request = (docType, uid = null) => ({ type: REQUEST, docType, uid })
-export const success = (docType, uid, doc) => ({ type: SUCCESS, docType, uid, doc })
+export const success = (docType, uid, doc, options) => ({
+  type: SUCCESS,
+  docType,
+  uid,
+  doc,
+  options
+})
 export const fail = (docType, uid, error) => ({ type: FAILURE, docType, uid, error })
 
 const byId = documents => keyBy(documents, "uid")
@@ -54,6 +60,7 @@ docs.docType = (state = {}, action) => {
         [uid]: {
           doc: action.doc,
           loading: false,
+          lang: action.options.lang,
           ...data
         }
       }
@@ -62,7 +69,7 @@ docs.docType = (state = {}, action) => {
         ...state,
         ...flow(
           byId,
-          _ => mapValues(_, doc => ({ doc }))
+          _ => mapValues(_, doc => ({ doc, lang: action.options.lang }))
         )(action.results)
       }
     case FAILURE:
