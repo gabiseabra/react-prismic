@@ -48,7 +48,6 @@ class PrismicLoader extends React.Component {
   render() {
     const { children, component: Component } = this.props
     const props = this.childProps
-    console.log(props)
     if(Component) {
       return <Component {...props} />
     }
