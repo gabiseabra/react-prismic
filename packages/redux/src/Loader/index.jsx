@@ -1,11 +1,12 @@
 import pick from "lodash.pick"
 import React from "react"
 import PropTypes from "prop-types"
-import eql from "deep-equal"
 
 const optionsProps = [ "lang", "after", "orderings", "pageSize", "page" ]
 
 const childProps = [ "loading", "error", "data" ]
+
+const sameOptions = (x, y) => !optionsProps.find(prop => x[prop] !== y[prop])
 
 class PrismicLoader extends React.Component {
   static propTypes = {
@@ -32,13 +33,8 @@ class PrismicLoader extends React.Component {
   }
 
   componentWillReceiveProps(next) {
-    const { load, data, loading } = this.props
-    if(data || loading) return
-    const options = pick(next, optionsProps)
-    const sameOptions = eql(this.options, options)
-    const sameDocument = (next.type === this.props.type && next.uid === this.props.uid)
-    if(sameOptions || !sameDocument) return
-    load(options)
+    const { load, data, loading, ...options } = this.props
+    if(!loading && !(data && sameOptions(next, options))) load(this.options)
   }
 
   get options() { return pick(this.props, optionsProps) }
