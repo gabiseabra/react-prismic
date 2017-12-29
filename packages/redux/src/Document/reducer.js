@@ -38,16 +38,24 @@ function docs(state = {}, action) {
 
 docs.docType = (state = {}, action) => {
   const uid = action.uid || "only"
+  const data = state[uid] || {}
   switch(action.type) {
     case REQUEST:
       return {
         ...state,
-        [uid]: { loading: true }
+        [uid]: {
+          loading: true,
+          ...data
+        }
       }
     case SUCCESS:
       return {
         ...state,
-        [uid]: { doc: action.doc }
+        [uid]: {
+          doc: action.doc,
+          loading: false,
+          ...data
+        }
       }
     case FEED_SUCCESS:
       return {
@@ -60,7 +68,11 @@ docs.docType = (state = {}, action) => {
     case FAILURE:
       return {
         ...state,
-        [uid]: { error: action.error }
+        [uid]: {
+          loading: false,
+          error: action.error,
+          ...data
+        }
       }
     default: return state
   }
