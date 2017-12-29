@@ -1,28 +1,11 @@
+import pick from "lodash.pick"
 import React from "react"
 import PropTypes from "prop-types"
 import eql from "deep-equal"
 
-const optionsProps = {
-  lang: PropTypes.string,
-  after: PropTypes.string,
-  orderings: PropTypes.string,
-  pageSize: PropTypes.number,
-  page: PropTypes.number
-}
+const optionsProps = [ "lang", "after", "orderings", "pageSize", "page" ]
 
-const childProps = {
-  loading: PropTypes.bool.isRequired,
-  error: PropTypes.instanceOf(Error),
-  data: PropTypes.any
-}
-
-const extract = (src, propTypes) => {
-  const result = {}
-  Object.keys(propTypes).forEach((key) => {
-    result[key] = src[key]
-  })
-  return result
-}
+const childProps = [ "loading", "error", "data" ]
 
 class PrismicLoader extends React.Component {
   static propTypes = {
@@ -31,8 +14,16 @@ class PrismicLoader extends React.Component {
     component: PropTypes.any, // ?
     children: PropTypes.func,
     load: PropTypes.func.isRequired,
-    ...childProps,
-    ...optionsProps
+    // optionsProps
+    lang: PropTypes.string,
+    after: PropTypes.string,
+    orderings: PropTypes.string,
+    pageSize: PropTypes.number,
+    page: PropTypes.number,
+    // childProps
+    loading: PropTypes.bool.isRequired,
+    error: PropTypes.object,
+    data: PropTypes.any
   }
 
   componentWillMount() {
@@ -41,18 +32,18 @@ class PrismicLoader extends React.Component {
   }
 
   componentWillReceiveProps(next) {
-    const { load, data } = this.props
-    const options = extract(next, optionsProps)
+    const { load, data, loading } = this.props
+    if(data || loading) return
+    const options = pick(optionsProps, next)
     const sameOptions = eql(this.options, options)
     const sameDocument = (next.type === this.props.type && next.uid === this.props.uid)
-    if(!data || (!sameOptions && sameDocument)) {
-      load(options)
-    }
+    if(sameOptions || !sameDocument) return
+    load(options)
   }
 
-  get options() { return extract(this.props, optionsProps) }
+  get options() { return pick(optionsProps, this.props) }
 
-  get childProps() { return extract(this.props, childProps) }
+  get childProps() { return pick(childProps, this.props) }
 
   render() {
     const { children, component: Component } = this.props

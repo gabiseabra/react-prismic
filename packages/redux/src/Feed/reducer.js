@@ -70,7 +70,7 @@ feed.docType = (state = initialState, action) => {
         ...state,
         pages: {
           ...state.pages,
-          [action.page]: { error: state.error }
+          [action.page]: { error: action.error }
         }
       }
     default: return state
