@@ -11,7 +11,6 @@ export default function create(apiClient) {
     yield put(actions.request(docType, uid))
     try {
       const doc = yield call(apiClient.one, docType, uid, options)
-      console.log(doc)
       yield put(actions.success(docType, uid, doc, options))
     } catch(error) {
       yield put(actions.fail(docType, uid, error))
