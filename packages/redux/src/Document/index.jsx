@@ -1,4 +1,6 @@
-import React from "react"
+import hash from "object-hash"
+import pick from "lodash.pick"
+import React, { Component } from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import Loader from "../Loader"
@@ -9,14 +11,38 @@ import {
   isDocumentLoading
 } from "./selectors"
 
-const DocumentLoader = ({ load, ...rest }) => (
-  <Loader load={options => load(rest.type, rest.uid, options)} {...rest} />
-)
+class DocumentLoader extends Component {
+  static propTypes = {
+    load: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired,
+    type: PropTypes.string.isRequired,
+    uid: PropTypes.string
+  }
 
-DocumentLoader.propTypes = {
-  load: PropTypes.func.isRequired,
-  type: PropTypes.string.isRequired,
-  uid: PropTypes.string
+  onLoad = () => {
+    const { load, loading, type, uid } = this.props
+    if(!loading) load(type, uid, this.options)
+  }
+
+  get options() {
+    return pick(this.props, [
+      "uid",
+      "lang"
+    ])
+  }
+
+  get key() {
+    return hash(this.options)
+  }
+
+  render() {
+    return (
+      <Loader
+        {...this.props}
+        key={this.key}
+        onLoad={this.onLoad} />
+    )
+  }
 }
 
 const props = (...args) => ({
@@ -29,6 +55,6 @@ const actions = {
   load: reducer.load
 }
 
-export const prismicDocument = Component => connect(props, actions)(Component)
+export const prismicDocument = Target => connect(props, actions)(Target)
 
 export default prismicDocument(DocumentLoader)
