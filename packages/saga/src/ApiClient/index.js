@@ -34,8 +34,12 @@ export default class ApiClient {
     return this.client
   }
 
-  all = (type, options = {}) => this.api.then(api => (
-    api.query(Prismic.Predicates.at("document.type", type), options)
+  predicates = p => Object.keys(type => (
+    Prismic.Predicates.at(type, p[type])
+  ))
+
+  all = (type, options = {}, search = {}) => this.api.then(api => (
+    api.query(this.predicates({ "document.type": type, ...search }), options)
   )).then(response => ({
     pagination: pagination(response),
     results: response.results

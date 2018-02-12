@@ -15,7 +15,8 @@ export default function create(apiClient) {
   function * request({ docType, page, options }) {
     yield put(actions.request(docType, page))
     try {
-      const collection = yield call(apiClient.all, docType, options)
+      const { predicates, ...rest } = options
+      const collection = yield call(apiClient.all, docType, rest, predicates)
       yield put(actions.success(docType, page, collection, options))
     } catch(error) {
       yield put(actions.fail(docType, page, error))

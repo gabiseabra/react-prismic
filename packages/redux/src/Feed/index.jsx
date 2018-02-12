@@ -30,6 +30,7 @@ class FeedLoader extends Component {
       "lang",
       "after",
       "orderings",
+      "predicates",
       "pageSize"
     ])
   }
