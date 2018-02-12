@@ -45,8 +45,6 @@ const initialState = {
   pagination: {}
 }
 
-const pickOptions = _ => pick(_, [ "lang", "pageSize", "orderings", "after", "fetch" ])
-
 feed.docType = (state = initialState, action) => {
   switch(action.type) {
     /*
@@ -71,7 +69,7 @@ feed.docType = (state = initialState, action) => {
       return {
         ...state,
         pagination: action.pagination,
-        options: pickOptions(action.options),
+        options: action.options,
         pages: {
           ...state.pages,
           [action.page]: { docs: action.results.map(({ uid }) => uid) }

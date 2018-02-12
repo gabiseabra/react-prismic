@@ -34,7 +34,7 @@ export default class ApiClient {
     return this.client
   }
 
-  predicates = p => Object.keys(type => (
+  predicates = p => Object.keys(p).map(type => (
     Prismic.Predicates.at(type, p[type])
   ))
 
