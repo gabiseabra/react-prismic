@@ -34,7 +34,7 @@ export default class ApiClient {
     return this.client
   }
 
-  all = (type, options = {}, predicates = []) => console.log("!!!", predicates) || this.api.then(api => (
+  all = (type, options = {}, predicates = []) => this.api.then(api => (
     api.query([
       Prismic.Predicates.at("document.type", type),
       ...predicates
