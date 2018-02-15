@@ -16,7 +16,7 @@ class PrismicLoader extends React.Component {
     data: PropTypes.any
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const { onLoad, loading } = this.props
     if(!loading) onLoad(this.options)
   }
