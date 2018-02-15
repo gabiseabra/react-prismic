@@ -816,6 +816,10 @@ lodash.mapvalues@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/lodash.mapvalues/-/lodash.mapvalues-4.6.0.tgz#1bafa5005de9dd6f4f26668c30ca37230cc9689c"
 
+lodash.pick@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/lodash.pick/-/lodash.pick-4.4.0.tgz#52f05610fff9ded422611441ed1fc123a03001b3"
+
 lodash@^4.17.4, lodash@^4.2.0, lodash@^4.2.1:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
@@ -996,9 +1000,9 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
-prismic-javascript@^1.5.0-beta.0:
-  version "1.5.0-beta.0"
-  resolved "https://registry.yarnpkg.com/prismic-javascript/-/prismic-javascript-1.5.0-beta.0.tgz#2008efa27f35a5598309e52ebef615c1f5bf32ae"
+prismic-javascript@^1.5.0-beta.1:
+  version "1.5.0-beta.1"
+  resolved "https://registry.yarnpkg.com/prismic-javascript/-/prismic-javascript-1.5.0-beta.1.tgz#69091bd137a0e4f3953bb400f123a026ce51a4c9"
   dependencies:
     fetch-everywhere "^1.0.5"
 
@@ -1048,14 +1052,15 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-prismic-redux@^0.1.7:
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/react-prismic-redux/-/react-prismic-redux-0.1.7.tgz#011939c232d6a2c3ed5ed0e1b1526bb881e7cea5"
+react-prismic-redux@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/react-prismic-redux/-/react-prismic-redux-0.2.1.tgz#f13b64872a1be52166672f8a87a68cbad5f35896"
   dependencies:
     deep-equal "^1.0.1"
     lodash.flow "^3.5.0"
     lodash.keyby "^4.6.0"
     lodash.mapvalues "^4.6.0"
+    lodash.pick "^4.4.0"
     prop-types "^15.6.0"
     react "^16.2.0"
     react-redux "^5.0.6"
