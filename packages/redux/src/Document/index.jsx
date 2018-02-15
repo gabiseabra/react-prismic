@@ -26,7 +26,6 @@ class DocumentLoader extends Component {
 
   get options() {
     return pick(this.props, [
-      "uid",
       "lang"
     ])
   }
